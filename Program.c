@@ -1,10 +1,9 @@
 // Blynk app token
-#define BLYNK_TEMPLATE_ID "TMPL3Plb4B9M_"
-#define BLYNK_TEMPLATE_NAME "Smart Home Security"
-#define BLYNK_AUTH_TOKEN "WXcpSYw4S-bK9NLiJU-ASg8IR4gCAkgX"
+#define BLYNK_TEMPLATE_ID "TMPL3nr3lrGPa"
+#define BLYNK_TEMPLATE_NAME "LED1"
+#define BLYNK_AUTH_TOKEN "cSPux_oiz0-C5s46PBsdXKouEHhtM-1V"
 // Comment this out to disable prints and save space
 #define BLYNK_PRINT Serial
-
 
 #include "DHTesp.h"
 #include <WiFi.h>
@@ -29,7 +28,7 @@ const int buzzer_pin = 14;
 
 DHTesp dht;
 
-const int DELAY_UPDATE = 1000;
+const int DELAY_UPDATE = 10;
 uint32_t timerUpdate = 0;
 int gas_sensor_value = 0;
 int gas_output_value = 0;
@@ -87,7 +86,7 @@ void loop()
   gas_output_value = map(gas_sensor_value, 0, 4095, 0, 255);
   //Serial.print("Gas: ");
   //Serial.println(gas_output_value);
-  delay(100);
+  delay(10);
   if (gas_output_value > 165) {
     Serial.println("Gas Leakge Detected!");
     Blynk.logEvent("warning_message", "Gas Leakage Detected!");
